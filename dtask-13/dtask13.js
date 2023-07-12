@@ -3,7 +3,7 @@
 form.addEventListener("submit",store)
 
 function store(e)
-{     e.preventDefault();
+{     
 
     e.preventDefault();
     var user_details={
@@ -14,7 +14,7 @@ function store(e)
     let user_details_serialize=JSON.stringify(user_details);
 
 localStorage.setItem(user_details.Email,user_details_serialize)
-let ul=document.getElementById('item');
+let item=document.getElementById('item');
 let li=document.createElement('li')
 li.appendChild(document.createTextNode(user_details.Name));
 li.appendChild(document.createTextNode('-')); 
@@ -29,20 +29,18 @@ deletebtn.appendChild(document.createTextNode('Delete'));
 //append the button as a child of li
 li.appendChild(deletebtn)
 ////append li as a child of ul
-ul.appendChild(li)
-ul.addEventListener('click',remove_item)
+item.appendChild(li)
+deletebtn.onclick = () =>
 
 
- function remove_item(e)
-{
-   if( e.target.classList.contains('delete'))
    {
-    var li=e.target.parentElement
-    ul.removeChild(li)
     localStorage.removeItem(user_details.Email)
+    item.removeChild(li)
+    
    }
-}
-}
+    
+   }
+
 
 
 
